@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/organic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100vh;
+    overflow: auto;
+}
+
+
+/* Style for the main title */
+h1 {
+    color: white;
+    overflow: hidden;
+    white-space: normal;
+    border-right: none;
+    width: auto;
+    font-family: 'CustomFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 48px;
+    text-align: center;
+    margin-top: 70px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    padding: 10px;
+    animation: float 5s ease-in-out infinite ;
+}
+
+/* Word-by-word fade-in effect for the h1 title */
+h1 span {
+    opacity: 0;
+    display: inline-block;
+    animation: wordFadeIn 1.2s ease-in-out forwards;
+}
+
+h1 span:nth-child(1) { animation-delay: 0s; }
+h1 span:nth-child(2) { animation-delay: 0.3s; }
+h1 span:nth-child(3) { font-family:'Bruno Ace SC', serif; font-size: 50px; animation: wordFadeIn 1.5s ease-in-out 0.6s forwards, pulse 2.5s ease-in-out 1.2s infinite; color: cyan ;}
+h1 span:nth-child(4) {font-family: 'Bruno Ace SC', serif; font-size: 50px; animation: wordFadeIn 1.5s ease-in-out 0.9s forwards, pulse 2.5s ease-in-out 1.2s infinite; color: aqua;}
+h1 span:nth-child(5) {font: oblique; animation-delay: 1.2s; color:rgb(255, 245, 106);}
+
+@keyframes wordFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Floating animation for the h1 title */
+@keyframes float {
+    /* 0% { transform: translateY(0px); } */
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+/* Horizontal blurred line below the h1 text */
+hr {
+    border: none;
+    height: 12px;
+    background: rgb(0, 157, 255);
+    margin: 20px auto;
+    width: 80%;
+    filter: blur(20px);
+    animation: float 5s ease-in-out infinite;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: url('bground.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Style for the main container */
+.header-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profile image styling */
+/* .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+} */
+
+/* .profile-img {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    object-fit:contain;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: wordFadeIn 1.5s ease-in-out forwards, pulse 2.5s ease-in-out 1;
+    animation-delay: 1s;
+} */
+
+/* Date and time container styling */
+.date-time-container {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    color: cornflowerblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.date-time-container span {
+    font-family: Bruno Ace SC;
+    font-size: 15px;
+    color: aqua;
+}
+
+/* 404 Page Not Found Styling */
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.not-found-container h1 {
+    font-family: 'Bruno Ace SC';
+    font-size: 250px;
+    color:red;
+    margin: 0;
+    animation: pulse 2s infinite;
+}
+
+.not-found-container p {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.not-found-container .back-home {
+    text-decoration: none;
+    color:aqua;
+    font-size: 20px;
+    border: 3px solid aqua;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.5s, color 0.5s;
+}
+
+.not-found-container .back-home:hover {
+    border: none;
+    background: aqua;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
