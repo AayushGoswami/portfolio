@@ -9,7 +9,10 @@
 
 html, body {
     height: 100vh;
-    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevent scrollbars on the 404 page */
 }
 
 
@@ -27,14 +30,14 @@ h1 {
     letter-spacing: 0.1em;
     line-height: 1;
     padding: 10px;
-    animation: float 5s ease-in-out infinite ;
+    animation: float 3s ease-in-out 1;
 }
 
 /* Word-by-word fade-in effect for the h1 title */
 h1 span {
     opacity: 0;
     display: inline-block;
-    animation: wordFadeIn 1.2s ease-in-out forwards;
+    animation: wordFadeIn 1s ease-in-out forwards;
 }
 
 h1 span:nth-child(1) { animation-delay: 0s; }
@@ -50,10 +53,9 @@ h1 span:nth-child(5) {font: oblique; animation-delay: 1.2s; color:rgb(255, 245, 
 
 /* Floating animation for the h1 title */
 @keyframes float {
-    /* 0% { transform: translateY(0px); } */
-    0% { transform: translateY(0px); }
+    0% { transform: translateY(0); }
     50% { transform: translateY(20px); }
-    100% { transform: translateY(0px); }
+    100% { transform: translateY(0); }
 }
 
 @keyframes pulse {
@@ -61,15 +63,22 @@ h1 span:nth-child(5) {font: oblique; animation-delay: 1.2s; color:rgb(255, 245, 
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
+
+@keyframes moveUp {
+
+    0% {transform: translateY(0) scale(1);}
+    100% {transform: translateY(-300px) scale(0.618);}
+}
+
 /* Horizontal blurred line below the h1 text */
 hr {
     border: none;
     height: 12px;
     background: rgb(0, 157, 255);
     margin: 20px auto;
-    width: 80%;
+    width: 90%;
     filter: blur(20px);
-    animation: float 5s ease-in-out infinite;
+    animation: float 3s ease-in-out 1;
 
 }
 
@@ -77,8 +86,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: url('bground.png') no-repeat center center fixed;
-    background-size: cover;
+    background: black; /* Change background to black */
 }
 
 /* Style for the main container */
@@ -87,6 +95,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
+    animation: moveUp 2.2s ease-in-out 2.5s forwards;
 }
 
 /* Profile image styling */
@@ -168,4 +178,85 @@ body {
     background: aqua;
     font-weight: bold;
     color: rgb(0, 0, 0);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .date-time-container {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .not-found-container h1 {
+        font-size: 150px;
+    }
+
+    .not-found-container p {
+        font-size: 24px;
+    }
+}
+
+/* Interactive blocks container */
+.interactive-blocks {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px; */
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 3.3s forwards;
+}
+
+/* Individual block styling */
+.block {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, #4151a1, rgb(19, 165, 165)); /* Gradient for 3D effect */
+    box-shadow: inset 5px 5px 10px #1a1a1a, inset -5px -5px 10px #4a4a4a, /* Inner shadow for embossing */
+                5px 5px 15px #0d0d0d, -5px -5px 15px #353535; /* Outer shadow for depth */
+    border-radius: 10px;
+    color: black;
+    font-family: 'Bruno Ace SC', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.block:hover {
+    transform: scale(1.2);
+    color: white;
+    background: linear-gradient(145deg, #001581, rgb(0, 97, 142)); /* Gradient for 3D effect */
+    box-shadow: inset 5px 5px 10px #1a1a1a, inset -5px -5px 10px #4a4a4a, /* Keep inner shadow */
+                8px 8px 20px #6e6e6e, -8px -8px 20px #c1c0c0; /* Enhance outer shadow */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
